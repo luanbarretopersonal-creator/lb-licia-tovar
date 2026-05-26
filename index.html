@@ -425,6 +425,13 @@ textarea.q-input{resize:vertical;min-height:80px;}
 .ex-alt-wrap{display:flex;align-items:center;gap:6px;margin-top:4px;}.ex-alt-btn{background:rgba(201,168,76,0.15);border:1px solid rgba(201,168,76,0.3);color:var(--gold);font-size:11px;padding:1px 8px;border-radius:3px;cursor:pointer;font-weight:700;}.ex-alt-content{font-size:10px;color:var(--white-dim);}.ex-alt-label{color:var(--gold);font-weight:600;margin-right:4px;}.ex-conj{color:var(--gold);font-size:9px;display:block;margin-top:2px;}.ig-link{display:inline-block;background:rgba(201,168,76,0.08);border:1px solid rgba(201,168,76,0.25);color:var(--gold);font-size:10px;padding:4px 12px;border-radius:2px;text-decoration:none;}.biblio-block{background:var(--dark2);border:1px solid var(--border);border-radius:4px;overflow:hidden;margin-bottom:20px;}.biblio-block-title{background:linear-gradient(90deg,#1a1500,var(--dark2));border-bottom:1px solid var(--border);padding:13px 20px;font-family:'Cormorant Garamond',serif;font-size:17px;color:var(--gold);}.biblio-item{padding:16px 20px;border-bottom:1px solid rgba(255,255,255,0.04);}.biblio-item:last-child{border-bottom:none;}.biblio-tag{font-size:10px;font-weight:700;letter-spacing:1px;color:var(--gold);text-transform:uppercase;margin-bottom:8px;}.biblio-item p{font-size:11px;color:var(--white-dim);line-height:1.9;}
 .zona-verde{background:rgba(80,200,80,0.12);color:#7dd87d;border:1px solid rgba(80,200,80,0.3);font-size:9px;padding:2px 8px;border-radius:10px;font-weight:600;}.zona-amarela{background:rgba(255,200,50,0.12);color:#ffc832;border:1px solid rgba(255,200,50,0.3);font-size:9px;padding:2px 8px;border-radius:10px;font-weight:600;}.zona-vermelha{background:rgba(239,68,68,0.12);color:#f87171;border:1px solid rgba(239,68,68,0.3);font-size:9px;padding:2px 8px;border-radius:10px;font-weight:600;}
 .cardio-semana{background:var(--dark2);border:1px solid var(--border);border-radius:4px;overflow:hidden;margin-bottom:14px;}.cardio-header{background:linear-gradient(90deg,#1a1500,var(--dark2));border-bottom:1px solid var(--border);padding:12px 18px;font-family:'Cormorant Garamond',serif;font-size:16px;color:var(--gold);}.cardio-dia{padding:11px 18px;border-bottom:1px solid rgba(255,255,255,0.04);}.cardio-dia:last-child{border-bottom:none;}.cardio-dia-title{font-size:10px;font-weight:600;color:var(--white);margin-bottom:3px;display:flex;align-items:center;gap:7px;}.cardio-dia-desc{font-size:11px;color:var(--white-dim);line-height:1.8;}
+
+.dieta-panel{display:none;}
+.dieta-panel.active{display:block;animation:fadeUp 0.4s ease;}
+.dieta-tab-btn{background:var(--dark2);border:1px solid var(--border);color:var(--white-dim);font-family:'Montserrat',sans-serif;font-size:11px;letter-spacing:0.5px;padding:12px 20px;min-height:44px;cursor:pointer;border-radius:2px;transition:all 0.3s;white-space:nowrap;-webkit-tap-highlight-color:transparent;flex-shrink:0;text-align:left;line-height:1.3;}
+.dieta-tab-btn:hover{color:var(--gold);border-color:var(--border);}
+.dieta-tab-btn.active{color:var(--gold);border-color:var(--gold);background:var(--gold-dim);}
+
 </style></head><body>
 <div class="watermark">Consultoria LB · Exclusivo para Lícia Tovar</div>
 <div class="timer-overlay" id="timerOverlay"><div class="timer-box"><div style="font-size:11px;letter-spacing:2px;text-transform:uppercase;color:var(--white-dim);margin-bottom:16px;">Descanso entre séries</div><div class="timer-presets"><button class="timer-preset" onclick="setTimer(45)">45s</button><button class="timer-preset" onclick="setTimer(60)">60s</button><button class="timer-preset" onclick="setTimer(90)">90s</button><button class="timer-preset" onclick="setTimer(120)">2 min</button></div><div class="timer-count" id="timerCount">60</div><div class="timer-label">segundos</div><div class="timer-btns"><button class="timer-btn" onclick="startTimer()">▶ Iniciar</button><button class="timer-btn" onclick="pauseTimer()">⏸ Pausar</button><button class="timer-btn" onclick="resetTimer()">↺ Reset</button><button class="timer-btn" onclick="closeTimer()">✕ Fechar</button></div></div></div>
@@ -443,7 +450,7 @@ textarea.q-input{resize:vertical;min-height:80px;}
   </div>
   <div class="plan-info-bar">
     <div class="plan-pill"><div class="pl-label">Objetivo</div><div class="pl-val">Composição + Saúde Hormonal</div></div>
-    <div class="plan-pill"><div class="pl-label">Total diário</div><div class="pl-val">~1.921 kcal</div></div>
+    <div class="plan-pill"><div class="pl-label">Total diário</div><div class="pl-val">~1.843 kcal</div></div>
     <div class="plan-pill"><div class="pl-label">Refeições</div><div class="pl-val">4 refeições</div></div>
     <div class="plan-pill"><div class="pl-label">Cardio</div><div class="pl-val">7x/semana · 40–60 min</div></div>
   </div>
@@ -466,7 +473,7 @@ textarea.q-input{resize:vertical;min-height:80px;}
     </div>
     <div class="welcome-box">
       <p>Lícia, este é o seu portal personalizado da <strong>Consultoria LB</strong>. Dieta, cardio, relatório e biblioteca — tudo organizado e acessível.</p>
-      <p>A dieta foi montada com <strong>4 refeições · ~1.921 kcal</strong>, sem glúten e sem lactose, respeitando seu perfil metabólico e hormonal. Simples, repetitiva quando necessário, com adesão real.</p>
+      <p>A dieta foi montada com <strong>4 refeições · ~1.843 kcal (treino) · ~1.551 kcal (repouso)</strong>, sem glúten e sem lactose, respeitando seu perfil metabólico e hormonal. Simples, repetitiva quando necessário, com adesão real.</p>
       <p>O cardio é <strong>avançado e progressivo</strong> — 6 semanas estruturadas com Zona 2 como base e aumento gradual de densidade em Zona 3 e 4. Você já tem a base, agora vem a progressão controlada.</p>
       <p>Sono e regularidade alimentar são prioridades tão importantes quanto o treino nesse momento. O corpo responde ao conjunto — não só ao esforço.</p>
       <p style="color:var(--gold);font-size:11px;letter-spacing:1px;margin-top:16px;">— Luan Barreto · Nutricionista &amp; Treinador</p>
@@ -474,7 +481,7 @@ textarea.q-input{resize:vertical;min-height:80px;}
   </div>
   <div class="section-header"><h2>O que você <span>encontra aqui</span></h2><div class="section-line"></div></div>
   <div class="info-grid">
-    <div class="info-box"><div class="icon">🥗</div><h4>Dieta</h4><p>4 refeições · ~1.921 kcal · sem glúten · sem lactose · Hashimoto-friendly.</p></div>
+    <div class="info-box"><div class="icon">🥗</div><h4>Dieta</h4><p>4 refeições · ~1.843 kcal (treino) · ~1.551 kcal (repouso) · sem glúten · sem lactose · Hashimoto-friendly.</p></div>
     <div class="info-box"><div class="icon">🏋️</div><h4>Treino</h4><p>Com Prof. Leonardo · 6x/semana · orientações de carboidrato para dias de MMII.</p></div>
     <div class="info-box"><div class="icon">🔥</div><h4>Cardio</h4><p>7x/semana · 40 min (Seg–Sáb) · 60 min (Dom) · 6 semanas progressivas.</p></div>
     <div class="info-box"><div class="icon">📈</div><h4>Evolução</h4><p>Histórico de peso com gráfico e registro de fotos.</p></div>
@@ -483,12 +490,18 @@ textarea.q-input{resize:vertical;min-height:80px;}
   </div>
 </section><section id="dieta" class="section">
   <div class="section-header"><h2>Planejamento <span>Alimentar</span></h2><div class="section-line"></div></div>
-  <div class="sub-search-wrap"><h4>🔍 Busca rápida de substitutos</h4><input class="sub-search-input" type="text" id="subSearch" placeholder="Digite o alimento..." oninput="searchSubs()"><div id="sub-results"></div></div>
-  <div style="background:rgba(251,191,36,0.06);border:1px solid rgba(251,191,36,0.2);border-radius:3px;padding:10px 14px;margin-bottom:10px;font-size:11px;color:#fbbf24;line-height:1.8;">
+  <div class="sub-search-wrap"><h4>🔍 Busca rápida de substitutos</h4><input class="sub-search-input" type="text" id="subSearch" placeholder="Digite o alimento..." oninput="searchSubs()"><div id="sub-results"></div>
+    <div style="background:rgba(251,191,36,0.06);border:1px solid rgba(251,191,36,0.2);border-radius:3px;padding:10px 14px;margin-bottom:10px;font-size:11px;color:#fbbf24;line-height:1.8;">
     ⚠️ <strong>Hashimoto + Climatério:</strong> sem glúten · sem lactose · evite longos períodos em jejum · regularidade alimentar é parte do tratamento. · <strong>Cardio em jejum OK</strong> (exceto treino de MMII com Prof. Leonardo — coma antes).
   </div>
-  <div class="meal-total"><div class="total-pill"><span class="label">Total diário</span><span class="value">~1.921</span><span style="font-size:10px;color:var(--white-dim);">kcal</span></div></div>
 
+  <div class="treino-tabs" style="margin-bottom:20px;">
+    <button class="dieta-tab-btn active" onclick="showDieta('dieta-treino',this)">🏋️ Dia de Treino<span style="font-size:9px;opacity:0.6;display:block;margin-top:2px;">~1.843 kcal</span></button>
+    <button class="dieta-tab-btn" onclick="showDieta('dieta-repouso',this)">😴 Dia sem Treino<span style="font-size:9px;opacity:0.6;display:block;margin-top:2px;">~1.633 kcal</span></button>
+  </div>
+
+  <div id="dieta-treino" class="dieta-panel active">
+    <div class="meal-total"><div class="total-pill"><span class="label">Total diário</span><span class="value">~1.843</span><span style="font-size:10px;color:var(--white-dim);">kcal</span></div></div>
   <div class="meal-card">
     <div class="meal-header"><div class="meal-header-left"><div class="meal-num">1</div><div><div class="meal-name">Café da Manhã</div><span class="meal-time">Pós-cardio em jejum · ou ao acordar</span></div></div><div class="meal-kcal">486 <span>kcal</span></div></div>
     <div class="meal-table-wrap"><table class="meal-table"><thead><tr><th>Alimento</th><th>Qtd.</th><th>kcal</th><th>Substituições</th></tr></thead><tbody>
@@ -498,22 +511,20 @@ textarea.q-input{resize:vertical;min-height:80px;}
       <tr><td class="food-name">Iogurte zero sem lactose</td><td class="food-qty">200ml</td><td class="food-kcal">80</td><td class="food-sub">Leite desnatado s/lactose <strong>200ml</strong> · Kefir <strong>200ml</strong></td></tr>
       <tr><td class="food-name">Whey protein</td><td class="food-qty">15g</td><td class="food-kcal">60</td><td class="food-sub">Frango <strong>50g</strong> · Atum <strong>50g</strong> · 3 claras</td></tr>
     </tbody></table></div>
-    <div class="meal-obs-area"><textarea placeholder="Observações..." data-key="meal-obs-1" onchange="saveObs(this)"></textarea></div>
+    <div class="meal-obs-area"><textarea placeholder="Observações..." data-key="meal-obs-t1" onchange="saveObs(this)"></textarea></div>
   </div>
-
   <div class="meal-card">
-    <div class="meal-header"><div class="meal-header-left"><div class="meal-num">2</div><div><div class="meal-name">Almoço</div><span class="meal-time">Refeição principal</span></div></div><div class="meal-kcal">575 <span>kcal</span></div></div>
+    <div class="meal-header"><div class="meal-header-left"><div class="meal-num">2</div><div><div class="meal-name">Almoço</div><span class="meal-time">Refeição principal</span></div></div><div class="meal-kcal">536 <span>kcal</span></div></div>
     <div class="meal-table-wrap"><table class="meal-table"><thead><tr><th>Alimento</th><th>Qtd.</th><th>kcal</th><th>Substituições</th></tr></thead><tbody>
-      <tr><td class="food-name">Arroz branco</td><td class="food-qty">100g</td><td class="food-kcal">130</td><td class="food-sub">Batata <strong>180g</strong> · Macarrão s/glúten <strong>100g</strong> · Aipim <strong>120g</strong> · Cuscuz <strong>100g</strong> · Inhame <strong>120g</strong></td></tr>
+      <tr><td class="food-name">Arroz branco</td><td class="food-qty">70g</td><td class="food-kcal">91</td><td class="food-sub">Batata <strong>126g</strong> · Macarrão s/glúten <strong>70g</strong> · Aipim <strong>84g</strong> · Cuscuz <strong>70g</strong> · Inhame <strong>84g</strong></td></tr>
       <tr><td class="food-name">Frango grelhado</td><td class="food-qty">120g</td><td class="food-kcal">240</td><td class="food-sub">Sardinha <strong>120g</strong> · Atum <strong>120g</strong> · Salmão <strong>120g</strong> · Tilápia <strong>140g</strong></td></tr>
       <tr><td class="food-name">Verduras e vegetais</td><td class="food-qty">150g</td><td class="food-kcal">45</td><td class="food-sub">Couve · Brócolis · Cenoura · Abobrinha · Espinafre</td></tr>
       <tr><td class="food-name">Abacaxi</td><td class="food-qty">100g</td><td class="food-kcal">50</td><td class="food-sub">Melão · Mamão · Maçã · Uva · Pêra</td></tr>
       <tr><td class="food-name">Azeite</td><td class="food-qty">1 colher</td><td class="food-kcal">110</td><td class="food-sub">—</td></tr>
     </tbody></table></div>
     <div style="background:rgba(201,168,76,0.05);border:1px solid var(--border);border-left:3px solid var(--gold);border-radius:3px;padding:8px 12px;margin-top:8px;font-size:10px;color:var(--white-dim);">💡 <strong style="color:var(--gold)">Dias de treino de MMII (perna):</strong> aumente o arroz para 150–180g para garantir energia no treino.</div>
-    <div class="meal-obs-area"><textarea placeholder="Observações..." data-key="meal-obs-2" onchange="saveObs(this)"></textarea></div>
+    <div class="meal-obs-area"><textarea placeholder="Observações..." data-key="meal-obs-t2" onchange="saveObs(this)"></textarea></div>
   </div>
-
   <div class="meal-card">
     <div class="meal-header"><div class="meal-header-left"><div class="meal-num">3</div><div><div class="meal-name">Lanche</div><span class="meal-time">Pré ou pós-treino · prático</span></div></div><div class="meal-kcal">395 <span>kcal</span></div></div>
     <div class="meal-table-wrap"><table class="meal-table"><thead><tr><th>Alimento</th><th>Qtd.</th><th>kcal</th><th>Substituições</th></tr></thead><tbody>
@@ -522,20 +533,62 @@ textarea.q-input{resize:vertical;min-height:80px;}
       <tr><td class="food-name">Iogurte zero sem lactose</td><td class="food-qty">200ml</td><td class="food-kcal">80</td><td class="food-sub">Leite desnatado s/lactose <strong>200ml</strong> · Kefir <strong>200ml</strong></td></tr>
       <tr><td class="food-name">Frutas variadas</td><td class="food-qty">150g</td><td class="food-kcal">75</td><td class="food-sub">Morango · Banana · Maçã · Mamão · Melão · Uva · Abacaxi</td></tr>
     </tbody></table></div>
-    <div class="meal-obs-area"><textarea placeholder="Observações..." data-key="meal-obs-3" onchange="saveObs(this)"></textarea></div>
+    <div class="meal-obs-area"><textarea placeholder="Observações..." data-key="meal-obs-t3" onchange="saveObs(this)"></textarea></div>
   </div>
-
   <div class="meal-card">
-    <div class="meal-header"><div class="meal-header-left"><div class="meal-num">4</div><div><div class="meal-name">Jantar</div><span class="meal-time">Refeição principal noturna</span></div></div><div class="meal-kcal">465 <span>kcal</span></div></div>
+    <div class="meal-header"><div class="meal-header-left"><div class="meal-num">4</div><div><div class="meal-name">Jantar</div><span class="meal-time">Refeição principal noturna</span></div></div><div class="meal-kcal">426 <span>kcal</span></div></div>
     <div class="meal-table-wrap"><table class="meal-table"><thead><tr><th>Alimento</th><th>Qtd.</th><th>kcal</th><th>Substituições</th></tr></thead><tbody>
-      <tr><td class="food-name">Arroz branco</td><td class="food-qty">100g</td><td class="food-kcal">130</td><td class="food-sub">Batata <strong>180g</strong> · Macarrão s/glúten <strong>100g</strong> · Aipim <strong>120g</strong> · Cuscuz <strong>100g</strong></td></tr>
+      <tr><td class="food-name">Arroz branco</td><td class="food-qty">70g</td><td class="food-kcal">91</td><td class="food-sub">Batata <strong>126g</strong> · Macarrão s/glúten <strong>70g</strong> · Aipim <strong>84g</strong> · Cuscuz <strong>70g</strong></td></tr>
       <tr><td class="food-name">Salmão grelhado</td><td class="food-qty">120g</td><td class="food-kcal">240</td><td class="food-sub">Sardinha <strong>120g</strong> · Atum <strong>120g</strong> · Frango <strong>120g</strong> · Tilápia <strong>140g</strong></td></tr>
       <tr><td class="food-name">Verduras e vegetais</td><td class="food-qty">150g</td><td class="food-kcal">45</td><td class="food-sub">Couve · Brócolis · Cenoura · Abobrinha · Espinafre</td></tr>
       <tr><td class="food-name">Abacaxi</td><td class="food-qty">100g</td><td class="food-kcal">50</td><td class="food-sub">Melão · Mamão · Maçã · Uva · Pêra</td></tr>
     </tbody></table></div>
-    <div class="meal-obs-area"><textarea placeholder="Observações..." data-key="meal-obs-4" onchange="saveObs(this)"></textarea></div>
+    <div class="meal-obs-area"><textarea placeholder="Observações..." data-key="meal-obs-t4" onchange="saveObs(this)"></textarea></div>
   </div>
-</section><section id="treino" class="section">
+  </div>
+
+  <div id="dieta-repouso" class="dieta-panel">
+    <div class="meal-total"><div class="total-pill"><span class="label">Total diário</span><span class="value">~1551</span><span style="font-size:10px;color:var(--white-dim);">kcal</span></div></div>
+  <div class="meal-card">
+    <div class="meal-header"><div class="meal-header-left"><div class="meal-num">1</div><div><div class="meal-name">Café da Manhã</div><span class="meal-time">Ao acordar — sem pré-treino</span></div></div><div class="meal-kcal">486 <span>kcal</span></div></div>
+    <div class="meal-table-wrap"><table class="meal-table"><thead><tr><th>Alimento</th><th>Qtd.</th><th>kcal</th><th>Substituições</th></tr></thead><tbody>
+      <tr><td class="food-name">Ovos inteiros</td><td class="food-qty">2 un</td><td class="food-kcal">140</td><td class="food-sub">Frango <strong>80g</strong> · Atum <strong>80g</strong> · Patinho <strong>80g</strong> · Whey <strong>15g</strong> · 5 claras</td></tr>
+      <tr><td class="food-name">Granola sem açúcar</td><td class="food-qty">30g</td><td class="food-kcal">120</td><td class="food-sub">Aveia <strong>30g</strong> · Tapioca <strong>70g</strong> · Flocão <strong>50g</strong></td></tr>
+      <tr><td class="food-name">Mamão</td><td class="food-qty">200g</td><td class="food-kcal">86</td><td class="food-sub">Banana · Maçã · Melão · Uva · Abacaxi</td></tr>
+      <tr><td class="food-name">Iogurte zero sem lactose</td><td class="food-qty">200ml</td><td class="food-kcal">80</td><td class="food-sub">Leite desnatado s/lactose <strong>200ml</strong> · Kefir <strong>200ml</strong></td></tr>
+      <tr><td class="food-name">Whey protein</td><td class="food-qty">15g</td><td class="food-kcal">60</td><td class="food-sub">Frango <strong>50g</strong> · Atum <strong>50g</strong> · 3 claras</td></tr>
+    </tbody></table></div>
+    <div class="meal-obs-area"><textarea placeholder="Observações..." data-key="meal-obs-r1" onchange="saveObs(this)"></textarea></div>
+  </div>
+  <div class="meal-card">
+    <div class="meal-header"><div class="meal-header-left"><div class="meal-num">2</div><div><div class="meal-name">Almoço</div><span class="meal-time">Refeição principal — sem carboidrato</span></div></div><div class="meal-kcal">335 <span>kcal</span></div></div>
+    <div class="meal-table-wrap"><table class="meal-table"><thead><tr><th>Alimento</th><th>Qtd.</th><th>kcal</th><th>Substituições</th></tr></thead><tbody>
+      <tr><td class="food-name">Frango grelhado</td><td class="food-qty">120g</td><td class="food-kcal">240</td><td class="food-sub">Sardinha <strong>120g</strong> · Atum <strong>120g</strong> · Salmão <strong>120g</strong> · Tilápia <strong>140g</strong></td></tr>
+      <tr><td class="food-name">Verduras e vegetais</td><td class="food-qty">150g</td><td class="food-kcal">45</td><td class="food-sub">Couve · Brócolis · Cenoura · Abobrinha · Espinafre</td></tr>
+      <tr><td class="food-name">Abacaxi</td><td class="food-qty">100g</td><td class="food-kcal">50</td><td class="food-sub">Melão · Mamão · Maçã · Uva · Pêra</td></tr>
+    </tbody></table></div>
+    <div class="meal-obs-area"><textarea placeholder="Observações..." data-key="meal-obs-r2" onchange="saveObs(this)"></textarea></div>
+  </div>
+  <div class="meal-card">
+    <div class="meal-header"><div class="meal-header-left"><div class="meal-num">3</div><div><div class="meal-name">Lanche</div><span class="meal-time">Prático</span></div></div><div class="meal-kcal">395 <span>kcal</span></div></div>
+    <div class="meal-table-wrap"><table class="meal-table"><thead><tr><th>Alimento</th><th>Qtd.</th><th>kcal</th><th>Substituições</th></tr></thead><tbody>
+      <tr><td class="food-name">Whey protein</td><td class="food-qty">30g</td><td class="food-kcal">120</td><td class="food-sub">Frango <strong>100g</strong> · Atum <strong>100g</strong> · Patinho <strong>100g</strong> · 5 claras</td></tr>
+      <tr><td class="food-name">Granola sem açúcar</td><td class="food-qty">30g</td><td class="food-kcal">120</td><td class="food-sub">Aveia <strong>30g</strong> · Tapioca <strong>70g</strong> · Flocão <strong>50g</strong></td></tr>
+      <tr><td class="food-name">Iogurte zero sem lactose</td><td class="food-qty">200ml</td><td class="food-kcal">80</td><td class="food-sub">Leite desnatado s/lactose <strong>200ml</strong> · Kefir <strong>200ml</strong></td></tr>
+      <tr><td class="food-name">Frutas variadas</td><td class="food-qty">150g</td><td class="food-kcal">75</td><td class="food-sub">Morango · Banana · Maçã · Mamão · Melão · Uva · Abacaxi</td></tr>
+    </tbody></table></div>
+    <div class="meal-obs-area"><textarea placeholder="Observações..." data-key="meal-obs-r3" onchange="saveObs(this)"></textarea></div>
+  </div>
+  <div class="meal-card">
+    <div class="meal-header"><div class="meal-header-left"><div class="meal-num">4</div><div><div class="meal-name">Jantar</div><span class="meal-time">Refeição principal noturna — sem carboidrato</span></div></div><div class="meal-kcal">335 <span>kcal</span></div></div>
+    <div class="meal-table-wrap"><table class="meal-table"><thead><tr><th>Alimento</th><th>Qtd.</th><th>kcal</th><th>Substituições</th></tr></thead><tbody>
+      <tr><td class="food-name">Salmão grelhado</td><td class="food-qty">120g</td><td class="food-kcal">240</td><td class="food-sub">Sardinha <strong>120g</strong> · Atum <strong>120g</strong> · Frango <strong>120g</strong> · Tilápia <strong>140g</strong></td></tr>
+      <tr><td class="food-name">Verduras e vegetais</td><td class="food-qty">150g</td><td class="food-kcal">45</td><td class="food-sub">Couve · Brócolis · Cenoura · Abobrinha · Espinafre</td></tr>
+      <tr><td class="food-name">Abacaxi</td><td class="food-qty">100g</td><td class="food-kcal">50</td><td class="food-sub">Melão · Mamão · Maçã · Uva · Pêra</td></tr>
+    </tbody></table></div>
+    <div class="meal-obs-area"><textarea placeholder="Observações..." data-key="meal-obs-r4" onchange="saveObs(this)"></textarea></div>
+  </div>
+  </section><section id="treino" class="section">
 <div class="section-header"><h2>Planejamento de <span>Treino</span></h2><div class="section-line"></div></div>
 <div style="background:linear-gradient(135deg,rgba(201,168,76,0.06),var(--dark2));border:1px solid rgba(201,168,76,0.3);border-radius:4px;padding:16px 20px;margin-bottom:18px;">
   <div style="font-family:'Cormorant Garamond',serif;font-size:17px;color:var(--gold);margin-bottom:8px;">🏋️ Treinamento com Prof. Leonardo</div>
@@ -835,7 +888,7 @@ textarea.q-input{resize:vertical;min-height:80px;}
     </div>
     <div class="meal-card">
       <div style="font-family:'Cormorant Garamond',serif;font-size:17px;color:var(--gold);margin-bottom:12px;">🍽️ Planejamento Alimentar</div>
-      <p style="font-size:12px;color:var(--white-dim);line-height:2;"><strong style="color:var(--white)">4 refeições · ~1.921 kcal/dia</strong>. Os alimentos foram selecionados estrategicamente: sem glúten, sem lactose, Hashimoto-friendly, de boa digestibilidade e praticidade máxima. Déficit calórico gradual para perda de gordura com preservação muscular. Nos dias de treino de MMII: aumente o carbo no almoço (arroz 100g → 150–180g).</p>
+      <p style="font-size:12px;color:var(--white-dim);line-height:2;"><strong style="color:var(--white)">4 refeições · ~1.843 kcal (treino) · ~1.551 kcal (repouso)/dia</strong>. Os alimentos foram selecionados estrategicamente: sem glúten, sem lactose, Hashimoto-friendly, de boa digestibilidade e praticidade máxima. Déficit calórico gradual para perda de gordura com preservação muscular. Nos dias de treino de MMII: aumente o carbo no almoço (arroz 100g → 150–180g).</p>
       <div style="background:rgba(251,191,36,0.06);border:1px solid rgba(251,191,36,0.2);border-radius:3px;padding:8px 12px;margin-top:8px;font-size:11px;color:#fbbf24;">⚠️ Evite longos períodos sem comer — no seu contexto (Hashimoto + climatério) isso aumenta estresse fisiológico e prejudica massa muscular e eixo hormonal.</div>
       <div style="margin-top:10px;display:flex;flex-wrap:wrap;gap:8px;"><a href="https://www.instagram.com/reel/DIzjTBhSr95/" target="_blank" class="ig-link">▶ Organização alimentar</a></div>
     </div>
@@ -2050,6 +2103,15 @@ function qEnviarWhatsapp() {
 
 
 function toggleAlt(btn){const c=btn.nextElementSibling;if(c.style.display==="none"){c.style.display="inline";btn.textContent="←";}else{c.style.display="none";btn.textContent="→";}}
+
+function showDieta(id,btn){
+  document.querySelectorAll('.dieta-panel').forEach(p=>p.classList.remove('active'));
+  document.querySelectorAll('.dieta-tab-btn').forEach(t=>t.classList.remove('active'));
+  const el=document.getElementById(id);
+  if(el)el.classList.add('active');
+  if(btn)btn.classList.add('active');
+}
+
 </script><script type="module">
   import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js";
   import { getFirestore, doc, setDoc, getDoc, collection, getDocs } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore.js";
