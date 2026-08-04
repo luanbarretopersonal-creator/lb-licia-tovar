@@ -432,6 +432,18 @@ textarea.q-input{resize:vertical;min-height:80px;}
 .dieta-tab-btn:hover{color:var(--gold);border-color:var(--border);}
 .dieta-tab-btn.active{color:var(--gold);border-color:var(--gold);background:var(--gold-dim);}
 
+
+.versao-tabs{display:flex;gap:6px;margin:0 0 16px;overflow-x:auto;-webkit-overflow-scrolling:touch;flex-wrap:nowrap;padding-bottom:4px;scrollbar-width:none;}
+.versao-tabs::-webkit-scrollbar{display:none;}
+.versao-tab{flex-shrink:0;background:var(--dark2);border:1px solid var(--border);color:var(--white-dim);font-family:'Montserrat',sans-serif;font-size:11px;letter-spacing:.5px;padding:12px 16px;min-height:40px;cursor:pointer;border-radius:3px;transition:all .3s;white-space:nowrap;}
+.versao-tab:hover{border-color:var(--gold);color:var(--gold);}
+.versao-tab.active{color:var(--gold);border-color:var(--gold);background:rgba(201,168,76,.12);}
+.versao-content{display:none;}
+.versao-content.active{display:block;animation:fadeUp .4s ease;}
+.plano-banner{background:linear-gradient(135deg,rgba(34,197,94,.06),var(--dark2));border:1px solid rgba(34,197,94,.25);border-radius:4px;padding:13px 16px;margin-bottom:16px;font-size:12px;line-height:1.75;color:var(--white-dim);}
+.plano-banner strong{color:var(--white);}
+.opcao-banner{background:linear-gradient(135deg,rgba(201,168,76,.08),var(--dark2));border:1px solid rgba(201,168,76,.4);border-radius:4px;padding:13px 16px;margin-bottom:16px;font-size:12px;line-height:1.75;color:var(--white-dim);}
+.opcao-banner strong{color:var(--white);}
 </style></head><body>
 <div class="watermark">Consultoria LB · Exclusivo para Lícia Tovar</div>
 <div class="timer-overlay" id="timerOverlay"><div class="timer-box"><div style="font-size:11px;letter-spacing:2px;text-transform:uppercase;color:var(--white-dim);margin-bottom:16px;">Descanso entre séries</div><div class="timer-presets"><button class="timer-preset" onclick="setTimer(45)">45s</button><button class="timer-preset" onclick="setTimer(60)">60s</button><button class="timer-preset" onclick="setTimer(90)">90s</button><button class="timer-preset" onclick="setTimer(120)">2 min</button></div><div class="timer-count" id="timerCount">60</div><div class="timer-label">segundos</div><div class="timer-btns"><button class="timer-btn" onclick="startTimer()">▶ Iniciar</button><button class="timer-btn" onclick="pauseTimer()">⏸ Pausar</button><button class="timer-btn" onclick="resetTimer()">↺ Reset</button><button class="timer-btn" onclick="closeTimer()">✕ Fechar</button></div></div></div>
@@ -495,120 +507,56 @@ textarea.q-input{resize:vertical;min-height:80px;}
     ⚠️ <strong>Hashimoto + Climatério:</strong> sem glúten · sem lactose · evite longos períodos em jejum · regularidade alimentar é parte do tratamento. · <strong>Cardio em jejum OK</strong> (exceto treino de MMII com Prof. Leonardo — coma antes).
   </div>
 
-  <div class="treino-tabs" style="margin-bottom:20px;">
-    <button class="dieta-tab-btn active" onclick="showDieta('dieta-treino',this)">🏋️ Dia de Treino<span style="font-size:9px;opacity:0.6;display:block;margin-top:2px;">~1.843 kcal</span></button>
-    <button class="dieta-tab-btn" onclick="showDieta('dieta-repouso',this)">😴 Dia sem Treino<span style="font-size:9px;opacity:0.6;display:block;margin-top:2px;">~1.633 kcal</span></button>
   </div>
-
-  <div id="dieta-treino" class="dieta-panel active">
-    <div class="meal-total"><div class="total-pill"><span class="label">Total diário</span><span class="value">~1.843</span><span style="font-size:10px;color:var(--white-dim);">kcal</span></div></div>
-  <div class="meal-card">
-    <div class="meal-header"><div class="meal-header-left"><div class="meal-num">1</div><div><div class="meal-name">Café da Manhã</div><span class="meal-time">Pós-cardio em jejum · ou ao acordar</span></div></div><div class="meal-kcal">486 <span>kcal</span></div></div>
+<div class="plano-banner">✅ <strong>Plano atual · a partir de 04/08/2026</strong> — dieta única (não dividida em dias com/sem treino). Cenário de <strong>déficit calórico controlado (~1670 kcal)</strong> para melhorar a composição corporal, com priorização de <strong>fibras solúveis (linhaça/psyllium/chia, aveia, leguminosas)</strong> e <strong>boas gorduras (salmão/ômega-3, azeite)</strong> para trabalhar o colesterol. Mantém sem glúten e sem lactose.</div><div class="meal-total"><div class="total-pill"><span class="label">Total diário</span><span class="value">~1.670</span><span style="font-size:10px;color:var(--white-dim);">kcal</span></div></div>  <div class="meal-card">
+    <div class="meal-header"><div class="meal-header-left"><div class="meal-num">1</div><div><div class="meal-name">Refeição 1</div><span class="meal-time">Café da manhã</span></div></div><div class="meal-kcal">346 <span>kcal</span></div></div>
     <div class="meal-table-wrap"><table class="meal-table"><thead><tr><th>Alimento</th><th>Qtd.</th><th>kcal</th><th>Substituições</th></tr></thead><tbody>
-      <tr><td class="food-name">Ovos inteiros</td><td class="food-qty">2 un</td><td class="food-kcal">140</td><td class="food-sub">Frango <strong>80g</strong> · Atum <strong>80g</strong> · Patinho <strong>80g</strong> · Whey <strong>15g</strong> · 5 claras</td></tr>
-      <tr><td class="food-name">Granola sem açúcar</td><td class="food-qty">30g</td><td class="food-kcal">120</td><td class="food-sub">Aveia <strong>30g</strong> · Tapioca <strong>70g</strong> · Flocão <strong>50g</strong> · Pão integral s/glúten <strong>2 fatias</strong></td></tr>
-      <tr><td class="food-name">Mamão</td><td class="food-qty">200g</td><td class="food-kcal">86</td><td class="food-sub">Banana · Maçã · Melão · Uva · Abacaxi</td></tr>
-      <tr><td class="food-name">Iogurte zero sem lactose</td><td class="food-qty">200ml</td><td class="food-kcal">80</td><td class="food-sub">Leite desnatado s/lactose <strong>200ml</strong> · Kefir <strong>200ml</strong></td></tr>
-      <tr><td class="food-name">Whey protein</td><td class="food-qty">15g</td><td class="food-kcal">60</td><td class="food-sub">Frango <strong>50g</strong> · Atum <strong>50g</strong> · 3 claras</td></tr>
-    </tbody></table></div>
-    <div class="meal-obs-area"><textarea placeholder="Observações..." data-key="meal-obs-t1" onchange="saveObs(this)"></textarea></div>
+      <tr><td class="food-name">Claras de ovo</td><td class="food-qty">3 un</td><td class="food-kcal">51</td><td class="food-sub">Whey <strong>13g</strong> · Frango <strong>31g</strong> · Atum <strong>46g</strong> · Patinho <strong>32g</strong> · 1 ovo inteiro</td></tr>
+      <tr><td class="food-name">Ovo inteiro</td><td class="food-qty">1 un</td><td class="food-kcal">70</td><td class="food-sub">3 claras · Whey <strong>17g</strong> · Frango <strong>42g</strong> · Atum <strong>62g</strong></td></tr>
+      <tr><td class="food-name">Linhaça, psyllium ou chia</td><td class="food-qty">20g</td><td class="food-kcal">100</td><td class="food-sub">Aveia <strong>25g</strong> · Granola sem açúcar <strong>25g</strong> · Tapioca <strong>25g</strong> · Farelo de aveia <strong>25g</strong> · Pão integral <strong>30g</strong></td></tr>
+      <tr><td class="food-name">Mamão</td><td class="food-qty">½ (~150g)</td><td class="food-kcal">65</td><td class="food-sub">Melão <strong>175g</strong> · Abacaxi <strong>135g</strong> · Melancia <strong>205g</strong> · Morango <strong>205g</strong> · Banana <strong>73g</strong></td></tr>
+      <tr><td class="food-name">Iogurte zero</td><td class="food-qty">150ml</td><td class="food-kcal">60</td><td class="food-sub">Leite desnatado <strong>175ml</strong> · Kefir zero <strong>150ml</strong> · Iogurte grego zero <strong>100g</strong> · Cottage <strong>80g</strong></td></tr>
+    </tbody></table><div style="text-align:center;font-size:10px;color:rgba(245,240,232,0.5);padding:3px 0 8px;">← deslize →</div></div>
+    <div class="meal-obs-area"><textarea placeholder="Observações desta refeição..." data-key="licia-obs-1" onchange="saveObs(this)"></textarea></div>
   </div>
   <div class="meal-card">
-    <div class="meal-header"><div class="meal-header-left"><div class="meal-num">2</div><div><div class="meal-name">Almoço</div><span class="meal-time">Refeição principal</span></div></div><div class="meal-kcal">536 <span>kcal</span></div></div>
+    <div class="meal-header"><div class="meal-header-left"><div class="meal-num">2</div><div><div class="meal-name">Refeição 2</div><span class="meal-time">Almoço</span></div></div><div class="meal-kcal">403 <span>kcal</span></div></div>
     <div class="meal-table-wrap"><table class="meal-table"><thead><tr><th>Alimento</th><th>Qtd.</th><th>kcal</th><th>Substituições</th></tr></thead><tbody>
-      <tr><td class="food-name">Arroz branco</td><td class="food-qty">70g</td><td class="food-kcal">91</td><td class="food-sub">Batata <strong>126g</strong> · Macarrão s/glúten <strong>70g</strong> · Aipim <strong>84g</strong> · Cuscuz <strong>70g</strong> · Inhame <strong>84g</strong></td></tr>
-      <tr><td class="food-name">Frango grelhado</td><td class="food-qty">120g</td><td class="food-kcal">240</td><td class="food-sub">Sardinha <strong>120g</strong> · Atum <strong>120g</strong> · Salmão <strong>120g</strong> · Tilápia <strong>140g</strong></td></tr>
-      <tr><td class="food-name">Verduras e vegetais</td><td class="food-qty">150g</td><td class="food-kcal">45</td><td class="food-sub">Couve · Brócolis · Cenoura · Abobrinha · Espinafre</td></tr>
-      <tr><td class="food-name">Abacaxi</td><td class="food-qty">100g</td><td class="food-kcal">50</td><td class="food-sub">Melão · Mamão · Maçã · Uva · Pêra</td></tr>
-      <tr><td class="food-name">Azeite</td><td class="food-qty">1 colher</td><td class="food-kcal">110</td><td class="food-sub">—</td></tr>
-    </tbody></table></div>
-    <div style="background:rgba(201,168,76,0.05);border:1px solid var(--border);border-left:3px solid var(--gold);border-radius:3px;padding:8px 12px;margin-top:8px;font-size:10px;color:var(--white-dim);">💡 <strong style="color:var(--gold)">Dias de treino de MMII (perna):</strong> aumente o arroz para 150–180g para garantir energia no treino.</div>
-    <div class="meal-obs-area"><textarea placeholder="Observações..." data-key="meal-obs-t2" onchange="saveObs(this)"></textarea></div>
+      <tr><td class="food-name">Arroz branco</td><td class="food-qty">70g</td><td class="food-kcal">91</td><td class="food-sub">Batata-doce <strong>76g</strong> · Macarrão <strong>80g</strong> · Aipim <strong>69g</strong> · Cuscuz <strong>77g</strong> · Inhame <strong>83g</strong></td></tr>
+      <tr><td class="food-name">Feijão</td><td class="food-qty">70g</td><td class="food-kcal">54</td><td class="food-sub">Lentilha <strong>47g</strong> · Grão-de-bico <strong>38g</strong> · Ervilha <strong>65g</strong> · Feijão preto <strong>63g</strong></td></tr>
+      <tr><td class="food-name">Peito de frango</td><td class="food-qty">100g</td><td class="food-kcal">165</td><td class="food-sub">Patinho <strong>100g</strong> · Tilápia <strong>170g</strong> · Atum <strong>145g</strong> · Salmão <strong>82g</strong> · 2 ovos + 1 clara</td></tr>
+      <tr><td class="food-name">Verduras e vegetais</td><td class="food-qty">150g</td><td class="food-kcal">45</td><td class="food-sub">Variar entre brócolis, couve-flor, cenoura, abobrinha, berinjela, vagem, espinafre, couve, alface, tomate</td></tr>
+      <tr><td class="food-name">Abacaxi</td><td class="food-qty">100g</td><td class="food-kcal">48</td><td class="food-sub">Melão <strong>96g</strong> · Melancia <strong>150g</strong> · Morango <strong>150g</strong> · Mamão <strong>110g</strong></td></tr>
+    </tbody></table><div style="text-align:center;font-size:10px;color:rgba(245,240,232,0.5);padding:3px 0 8px;">← deslize →</div></div>
+    <div class="meal-obs-area"><textarea placeholder="Observações desta refeição..." data-key="licia-obs-2" onchange="saveObs(this)"></textarea></div>
   </div>
   <div class="meal-card">
-    <div class="meal-header"><div class="meal-header-left"><div class="meal-num">3</div><div><div class="meal-name">Lanche</div><span class="meal-time">Pré ou pós-treino · prático</span></div></div><div class="meal-kcal">395 <span>kcal</span></div></div>
+    <div class="meal-header"><div class="meal-header-left"><div class="meal-num">3</div><div><div class="meal-name">Refeição 3</div><span class="meal-time">Lanche · pré/pós-treino</span></div></div><div class="meal-kcal">393 <span>kcal</span></div></div>
     <div class="meal-table-wrap"><table class="meal-table"><thead><tr><th>Alimento</th><th>Qtd.</th><th>kcal</th><th>Substituições</th></tr></thead><tbody>
-      <tr><td class="food-name">Whey protein</td><td class="food-qty">30g</td><td class="food-kcal">120</td><td class="food-sub">Frango <strong>100g</strong> · Atum <strong>100g</strong> · Patinho <strong>100g</strong> · 5 claras</td></tr>
-      <tr><td class="food-name">Granola sem açúcar</td><td class="food-qty">30g</td><td class="food-kcal">120</td><td class="food-sub">Aveia <strong>30g</strong> · Tapioca <strong>70g</strong> · Flocão <strong>50g</strong></td></tr>
-      <tr><td class="food-name">Iogurte zero sem lactose</td><td class="food-qty">200ml</td><td class="food-kcal">80</td><td class="food-sub">Leite desnatado s/lactose <strong>200ml</strong> · Kefir <strong>200ml</strong></td></tr>
-      <tr><td class="food-name">Frutas variadas</td><td class="food-qty">150g</td><td class="food-kcal">75</td><td class="food-sub">Morango · Banana · Maçã · Mamão · Melão · Uva · Abacaxi</td></tr>
-    </tbody></table></div>
-    <div class="meal-obs-area"><textarea placeholder="Observações..." data-key="meal-obs-t3" onchange="saveObs(this)"></textarea></div>
+      <tr><td class="food-name">Whey protein</td><td class="food-qty">30g</td><td class="food-kcal">118</td><td class="food-sub">Frango <strong>72g</strong> · Atum <strong>108g</strong> · Iogurte grego zero <strong>200g</strong> · 7 claras · 2 ovos</td></tr>
+      <tr><td class="food-name">Granola sem açúcar</td><td class="food-qty">15g</td><td class="food-kcal">60</td><td class="food-sub">Aveia <strong>15g</strong> · Tapioca <strong>15g</strong> · Pão integral <strong>20g</strong> · Flocos de milho <strong>16g</strong></td></tr>
+      <tr><td class="food-name">Chia, linhaça ou psyllium</td><td class="food-qty">15g</td><td class="food-kcal">75</td><td class="food-sub">Aveia <strong>20g</strong> · Farelo de aveia <strong>20g</strong> · Granola sem açúcar <strong>15g</strong> · Linhaça ↔ chia ↔ psyllium (intercambiáveis)</td></tr>
+      <tr><td class="food-name">Iogurte zero</td><td class="food-qty">200ml</td><td class="food-kcal">80</td><td class="food-sub">Leite desnatado <strong>235ml</strong> · Kefir zero <strong>200ml</strong> · Iogurte grego zero <strong>135g</strong> · Cottage <strong>110g</strong></td></tr>
+      <tr><td class="food-name">Frutas de baixa densidade</td><td class="food-qty">150g</td><td class="food-kcal">60</td><td class="food-sub">Variar entre mamão, melão, melancia, morango e abacaxi</td></tr>
+    </tbody></table><div style="text-align:center;font-size:10px;color:rgba(245,240,232,0.5);padding:3px 0 8px;">← deslize →</div></div>
+    <div class="meal-obs-area"><textarea placeholder="Observações desta refeição..." data-key="licia-obs-3" onchange="saveObs(this)"></textarea></div>
   </div>
   <div class="meal-card">
-    <div class="meal-header"><div class="meal-header-left"><div class="meal-num">4</div><div><div class="meal-name">Jantar</div><span class="meal-time">Refeição principal noturna</span></div></div><div class="meal-kcal">426 <span>kcal</span></div></div>
+    <div class="meal-header"><div class="meal-header-left"><div class="meal-num">4</div><div><div class="meal-name">Refeição 4</div><span class="meal-time">Jantar</span></div></div><div class="meal-kcal">528 <span>kcal</span></div></div>
     <div class="meal-table-wrap"><table class="meal-table"><thead><tr><th>Alimento</th><th>Qtd.</th><th>kcal</th><th>Substituições</th></tr></thead><tbody>
-      <tr><td class="food-name">Arroz branco</td><td class="food-qty">70g</td><td class="food-kcal">91</td><td class="food-sub">Batata <strong>126g</strong> · Macarrão s/glúten <strong>70g</strong> · Aipim <strong>84g</strong> · Cuscuz <strong>70g</strong></td></tr>
-      <tr><td class="food-name">Salmão grelhado</td><td class="food-qty">120g</td><td class="food-kcal">240</td><td class="food-sub">Sardinha <strong>120g</strong> · Atum <strong>120g</strong> · Frango <strong>120g</strong> · Tilápia <strong>140g</strong></td></tr>
-      <tr><td class="food-name">Verduras e vegetais</td><td class="food-qty">150g</td><td class="food-kcal">45</td><td class="food-sub">Couve · Brócolis · Cenoura · Abobrinha · Espinafre</td></tr>
-      <tr><td class="food-name">Abacaxi</td><td class="food-qty">100g</td><td class="food-kcal">50</td><td class="food-sub">Melão · Mamão · Maçã · Uva · Pêra</td></tr>
-    </tbody></table></div>
-    <div class="meal-obs-area"><textarea placeholder="Observações..." data-key="meal-obs-t4" onchange="saveObs(this)"></textarea></div>
+      <tr><td class="food-name">Arroz branco</td><td class="food-qty">70g</td><td class="food-kcal">91</td><td class="food-sub">Batata-doce <strong>76g</strong> · Macarrão <strong>80g</strong> · Aipim <strong>69g</strong> · Cuscuz <strong>77g</strong> · Inhame <strong>83g</strong></td></tr>
+      <tr><td class="food-name">Feijão</td><td class="food-qty">70g</td><td class="food-kcal">54</td><td class="food-sub">Lentilha <strong>47g</strong> · Grão-de-bico <strong>38g</strong> · Ervilha <strong>65g</strong> · Feijão preto <strong>63g</strong></td></tr>
+      <tr><td class="food-name">Salmão grelhado (ou frango 100g)</td><td class="food-qty">100g</td><td class="food-kcal">200</td><td class="food-sub">Frango <strong>120g</strong> · Atum <strong>145g</strong> · Sardinha <strong>105g</strong> · Tilápia <strong>205g</strong> · Patinho <strong>120g</strong></td></tr>
+      <tr><td class="food-name">Verduras e vegetais</td><td class="food-qty">150g</td><td class="food-kcal">45</td><td class="food-sub">Variar entre brócolis, couve-flor, cenoura, abobrinha, berinjela, vagem, espinafre, couve, alface, tomate</td></tr>
+      <tr><td class="food-name">Abacaxi</td><td class="food-qty">100g</td><td class="food-kcal">48</td><td class="food-sub">Melão <strong>96g</strong> · Melancia <strong>150g</strong> · Morango <strong>150g</strong> · Mamão <strong>110g</strong></td></tr>
+      <tr><td class="food-name">Azeite de oliva</td><td class="food-qty">½ colher (10ml)</td><td class="food-kcal">90</td><td class="food-sub">Abacate <strong>55g</strong> · Castanhas <strong>15g</strong> · Óleo de coco <strong>10ml</strong> · Pasta de amendoim <strong>15g</strong></td></tr>
+    </tbody></table><div style="text-align:center;font-size:10px;color:rgba(245,240,232,0.5);padding:3px 0 8px;">← deslize →</div></div>
+    <div class="meal-obs-area"><textarea placeholder="Observações desta refeição..." data-key="licia-obs-4" onchange="saveObs(this)"></textarea></div>
   </div>
-  </div>
-
-  <div id="dieta-repouso" class="dieta-panel">
-    <div class="meal-total"><div class="total-pill"><span class="label">Total diário</span><span class="value">~1551</span><span style="font-size:10px;color:var(--white-dim);">kcal</span></div></div>
-  <div class="meal-card">
-    <div class="meal-header"><div class="meal-header-left"><div class="meal-num">1</div><div><div class="meal-name">Café da Manhã</div><span class="meal-time">Ao acordar — sem pré-treino</span></div></div><div class="meal-kcal">486 <span>kcal</span></div></div>
-    <div class="meal-table-wrap"><table class="meal-table"><thead><tr><th>Alimento</th><th>Qtd.</th><th>kcal</th><th>Substituições</th></tr></thead><tbody>
-      <tr><td class="food-name">Ovos inteiros</td><td class="food-qty">2 un</td><td class="food-kcal">140</td><td class="food-sub">Frango <strong>80g</strong> · Atum <strong>80g</strong> · Patinho <strong>80g</strong> · Whey <strong>15g</strong> · 5 claras</td></tr>
-      <tr><td class="food-name">Granola sem açúcar</td><td class="food-qty">30g</td><td class="food-kcal">120</td><td class="food-sub">Aveia <strong>30g</strong> · Tapioca <strong>70g</strong> · Flocão <strong>50g</strong></td></tr>
-      <tr><td class="food-name">Mamão</td><td class="food-qty">200g</td><td class="food-kcal">86</td><td class="food-sub">Banana · Maçã · Melão · Uva · Abacaxi</td></tr>
-      <tr><td class="food-name">Iogurte zero sem lactose</td><td class="food-qty">200ml</td><td class="food-kcal">80</td><td class="food-sub">Leite desnatado s/lactose <strong>200ml</strong> · Kefir <strong>200ml</strong></td></tr>
-      <tr><td class="food-name">Whey protein</td><td class="food-qty">15g</td><td class="food-kcal">60</td><td class="food-sub">Frango <strong>50g</strong> · Atum <strong>50g</strong> · 3 claras</td></tr>
-    </tbody></table></div>
-    <div class="meal-obs-area"><textarea placeholder="Observações..." data-key="meal-obs-r1" onchange="saveObs(this)"></textarea></div>
-  </div>
-  <div class="meal-card">
-    <div class="meal-header"><div class="meal-header-left"><div class="meal-num">2</div><div><div class="meal-name">Almoço</div><span class="meal-time">Refeição principal — sem carboidrato</span></div></div><div class="meal-kcal">335 <span>kcal</span></div></div>
-    <div class="meal-table-wrap"><table class="meal-table"><thead><tr><th>Alimento</th><th>Qtd.</th><th>kcal</th><th>Substituições</th></tr></thead><tbody>
-      <tr><td class="food-name">Frango grelhado</td><td class="food-qty">120g</td><td class="food-kcal">240</td><td class="food-sub">Sardinha <strong>120g</strong> · Atum <strong>120g</strong> · Salmão <strong>120g</strong> · Tilápia <strong>140g</strong></td></tr>
-      <tr><td class="food-name">Verduras e vegetais</td><td class="food-qty">150g</td><td class="food-kcal">45</td><td class="food-sub">Couve · Brócolis · Cenoura · Abobrinha · Espinafre</td></tr>
-      <tr><td class="food-name">Abacaxi</td><td class="food-qty">100g</td><td class="food-kcal">50</td><td class="food-sub">Melão · Mamão · Maçã · Uva · Pêra</td></tr>
-    </tbody></table></div>
-    <div class="meal-obs-area"><textarea placeholder="Observações..." data-key="meal-obs-r2" onchange="saveObs(this)"></textarea></div>
-  </div>
-  <div class="meal-card">
-    <div class="meal-header"><div class="meal-header-left"><div class="meal-num">3</div><div><div class="meal-name">Lanche</div><span class="meal-time">Prático</span></div></div><div class="meal-kcal">395 <span>kcal</span></div></div>
-    <div class="meal-table-wrap"><table class="meal-table"><thead><tr><th>Alimento</th><th>Qtd.</th><th>kcal</th><th>Substituições</th></tr></thead><tbody>
-      <tr><td class="food-name">Whey protein</td><td class="food-qty">30g</td><td class="food-kcal">120</td><td class="food-sub">Frango <strong>100g</strong> · Atum <strong>100g</strong> · Patinho <strong>100g</strong> · 5 claras</td></tr>
-      <tr><td class="food-name">Granola sem açúcar</td><td class="food-qty">30g</td><td class="food-kcal">120</td><td class="food-sub">Aveia <strong>30g</strong> · Tapioca <strong>70g</strong> · Flocão <strong>50g</strong></td></tr>
-      <tr><td class="food-name">Iogurte zero sem lactose</td><td class="food-qty">200ml</td><td class="food-kcal">80</td><td class="food-sub">Leite desnatado s/lactose <strong>200ml</strong> · Kefir <strong>200ml</strong></td></tr>
-      <tr><td class="food-name">Frutas variadas</td><td class="food-qty">150g</td><td class="food-kcal">75</td><td class="food-sub">Morango · Banana · Maçã · Mamão · Melão · Uva · Abacaxi</td></tr>
-    </tbody></table></div>
-    <div class="meal-obs-area"><textarea placeholder="Observações..." data-key="meal-obs-r3" onchange="saveObs(this)"></textarea></div>
-  </div>
-  <div class="meal-card">
-    <div class="meal-header"><div class="meal-header-left"><div class="meal-num">4</div><div><div class="meal-name">Jantar</div><span class="meal-time">Refeição principal noturna — sem carboidrato</span></div></div><div class="meal-kcal">335 <span>kcal</span></div></div>
-    <div class="meal-table-wrap"><table class="meal-table"><thead><tr><th>Alimento</th><th>Qtd.</th><th>kcal</th><th>Substituições</th></tr></thead><tbody>
-      <tr><td class="food-name">Salmão grelhado</td><td class="food-qty">120g</td><td class="food-kcal">240</td><td class="food-sub">Sardinha <strong>120g</strong> · Atum <strong>120g</strong> · Frango <strong>120g</strong> · Tilápia <strong>140g</strong></td></tr>
-      <tr><td class="food-name">Verduras e vegetais</td><td class="food-qty">150g</td><td class="food-kcal">45</td><td class="food-sub">Couve · Brócolis · Cenoura · Abobrinha · Espinafre</td></tr>
-      <tr><td class="food-name">Abacaxi</td><td class="food-qty">100g</td><td class="food-kcal">50</td><td class="food-sub">Melão · Mamão · Maçã · Uva · Pêra</td></tr>
-    </tbody></table></div>
-    <div class="meal-obs-area"><textarea placeholder="Observações..." data-key="meal-obs-r4" onchange="saveObs(this)"></textarea></div>
-  </div>
-  </section><section id="treino" class="section">
-<div class="section-header"><h2>Planejamento de <span>Treino</span></h2><div class="section-line"></div></div>
-<div style="background:linear-gradient(135deg,rgba(201,168,76,0.06),var(--dark2));border:1px solid rgba(201,168,76,0.3);border-radius:4px;padding:16px 20px;margin-bottom:18px;">
-  <div style="font-family:'Cormorant Garamond',serif;font-size:17px;color:var(--gold);margin-bottom:8px;">🏋️ Treinamento com Prof. Leonardo</div>
-  <div style="font-size:11px;color:var(--white-dim);line-height:1.9;">Você está muito bem orientada e acompanhada pelo Prof. Leonardo. A orientação aqui é simples: <strong style="color:var(--white)">continue seguindo o planejamento proposto por ele</strong> e mantenha consistência nos treinos.</div>
-</div>
-<div class="meal-card">
-  <div style="font-family:'Cormorant Garamond',serif;font-size:17px;color:var(--gold);margin-bottom:14px;">📌 Orientações gerais</div>
-  <div style="display:flex;flex-direction:column;gap:10px;font-size:11px;color:var(--white-dim);line-height:1.9;">
-    <div style="background:var(--dark2);border:1px solid var(--border);border-left:3px solid var(--gold);border-radius:3px;padding:12px 16px;"><strong style="color:var(--white);">Treinar não é só estética.</strong> É o principal estímulo para preservação de massa muscular, melhora metabólica e equilíbrio hormonal — especialmente importante no contexto de Hashimoto e climatério.</div>
-    <div style="background:var(--dark2);border:1px solid var(--border);border-left:3px solid rgba(34,197,94,0.5);border-radius:3px;padding:12px 16px;"><strong style="color:var(--white);">Frequência:</strong> 6 dias/semana · 3 dias com o Prof. Leonardo · Cardio diário (veja a aba Cardio)</div>
-    <div style="background:var(--dark2);border:1px solid var(--border);border-left:3px solid rgba(251,191,36,0.5);border-radius:3px;padding:12px 16px;"><strong style="color:var(--white);">Carboidratos e treino de MMII:</strong> aumente o carbo na véspera e no dia dos treinos de membros inferiores. Nos outros dias, retorna ao padrão normal.</div>
-    <div style="background:var(--dark2);border:1px solid var(--border);border-left:3px solid rgba(201,168,76,0.4);border-radius:3px;padding:12px 16px;"><strong style="color:var(--white);">Descanso:</strong> o descanso faz parte do treino. Respeite os dias de recuperação — isso é parte da estratégia, não ausência de dedicação.</div>
-  </div>
-</div>
-<div class="meal-card">
-  <div style="font-size:10px;font-weight:600;letter-spacing:1px;color:var(--white-dim);text-transform:uppercase;margin-bottom:8px;">Observações do treino</div>
-  <textarea style="width:100%;background:transparent;border:none;color:var(--white-dim);font-family:'Montserrat',sans-serif;font-size:11px;resize:vertical;min-height:80px;outline:none;" placeholder="Anotações sobre os treinos com o Prof. Leonardo..." data-key="treino-obs-geral" onchange="saveObs(this)"></textarea>
-</div>
-</section><section id="cardio" class="section">
-  <div class="section-header"><h2>Programa de <span>Cardio</span></h2><div class="section-line"></div></div>
+<div class="meal-card"><div style="font-family:'Cormorant Garamond',serif;font-size:16px;color:var(--gold);margin-bottom:10px">💊 Suplementação</div><div style="font-size:12px;color:var(--white-dim);line-height:2.1;">• <strong style="color:var(--white)">Ômega-3:</strong> pelo menos 1 g por dia (EPA + DHA)<br>• <strong style="color:var(--white)">Creatina:</strong> 3 g por dia<br>• <strong style="color:var(--white)">Glutamina:</strong> 8 g por dia</div><div style="margin-top:10px;padding:9px 12px;background:rgba(201,168,76,.06);border-left:3px solid var(--gold);border-radius:3px;font-size:11px;color:var(--white-dim);line-height:1.7">Mantenha também os suplementos que você já vinha utilizando.</div></div>
+</section><section id="treino" class="section">
+<div class="section-header"><h2>Planejamento de <span>Treino</span></h2><div class="section-line"></div></div><div class="meal-card"><div style="font-family:'Cormorant Garamond',serif;font-size:16px;color:var(--gold);margin-bottom:10px">🏋️ Treinamento com Prof. Leonardo</div><p style="font-size:12px;color:var(--white-dim);line-height:2;">Você está muito bem orientada e acompanhada pelo Prof. Leonardo — <strong style="color:var(--white)">continue seguindo o planejamento dele</strong> e mantenha a consistência.</p></div><div class="meal-card"><div style="font-family:'Cormorant Garamond',serif;font-size:16px;color:var(--gold);margin-bottom:10px">📌 Estrutura sugerida da semana</div><p style="font-size:12px;color:var(--white-dim);line-height:2;">Como orientação de distribuição, busque <strong style="color:var(--white)">pelo menos 3 treinos de inferiores + 2 de superiores por semana</strong>. Se a rotina permitir, o ideal é treinar <strong style="color:var(--white)">6x na semana — 3 de inferiores + 3 de superiores</strong>.</p><p style="font-size:12px;color:var(--white-dim);line-height:2;">O treino de força é o principal estímulo para <strong style="color:var(--white)">preservar massa muscular, melhorar o metabolismo e o equilíbrio hormonal</strong> — ainda mais importante no seu contexto de Hashimoto e climatério.</p><p style="font-size:12px;color:var(--white-dim);line-height:2;"><strong style="color:var(--white)">Carboidrato e inferiores:</strong> nos dias de MMII, priorize o carbo em torno do treino. <strong style="color:var(--white)">Descanso</strong> faz parte da estratégia — respeite a recuperação.</p><div style="margin-top:8px;"><input class="cardio-obs-input" type="text" placeholder="Observações do treino..." data-key="treino-obs-licia" onchange="saveObs(this)"></div></div></section><section id="cardio" class="section">
+  <div class="section-header"><h2>Programa de <span>Cardio</span></h2><div class="section-line"></div></div><div class="opcao-banner">⭐ <strong>Mantenha o protocolo atual</strong> — 40 min de cardio no pós-treino todos os dias, variando modalidade e intensidade conforme abaixo. <strong>Se conseguir, adicione uma 2ª sessão pela manhã, em jejum</strong> (40 min de qualquer uma das modalidades), além da do pós-treino. Duas sessões no mesmo dia potencializam o resultado nesta fase de definição.</div>
   <div style="background:linear-gradient(135deg,rgba(239,68,68,0.06),var(--dark2));border:1px solid rgba(239,68,68,0.2);border-radius:4px;padding:16px 20px;margin-bottom:18px;">
     <div style="font-family:'Cormorant Garamond',serif;font-size:17px;color:#f87171;margin-bottom:10px;">🔥 Avançado Controlado · 6 semanas · 7x/semana</div>
     <div style="display:flex;gap:14px;flex-wrap:wrap;font-size:11px;color:var(--white-dim);margin-bottom:10px;">
@@ -874,50 +822,7 @@ textarea.q-input{resize:vertical;min-height:80px;}
   <div class="photo-grid" id="photoGrid"></div>
 
 </section><section id="relatorio" class="section">
-  <div class="section-header"><h2>Relatório <span>Personalizado</span></h2><div class="section-line"></div></div>
-  <div style="background:linear-gradient(135deg,rgba(201,168,76,0.06),var(--dark2));border:1px solid var(--border);border-radius:4px;padding:22px 24px;margin-bottom:20px;">
-    <div style="font-family:'Cormorant Garamond',serif;font-size:20px;color:var(--gold);margin-bottom:6px;">Lícia Tovar</div>
-    <div style="font-size:10px;color:var(--white-dim);letter-spacing:1px;">RELATÓRIO DE ACOMPANHAMENTO · CONSULTORIA LB</div>
-  </div>
-  <div style="display:flex;flex-direction:column;gap:18px;">
-    <div class="meal-card">
-      <div style="font-family:'Cormorant Garamond',serif;font-size:17px;color:var(--gold);margin-bottom:12px;">🎯 Objetivo</div>
-      <p style="font-size:12px;color:var(--white-dim);line-height:2;">Restabelecer uma rotina alimentar e comportamental sustentável, com foco na <strong style="color:var(--white)">melhora da composição corporal, saúde metabólica e equilíbrio hormonal</strong>, respeitando o contexto de Tireoidite de Hashimoto, climatério e histórico emocional recente. O foco inicial não é só perda de peso — é regular o padrão alimentar, melhorar o sono, reduzir estresse fisiológico, preservar massa muscular e melhorar sensibilidade à insulina.</p>
-      <div style="margin-top:10px;background:rgba(201,168,76,0.05);border:1px solid var(--border);border-left:3px solid var(--gold);border-radius:3px;padding:10px 14px;font-size:11px;color:var(--white);font-style:italic;">"Ela não precisa de mais estratégia, ela precisa de uma estratégia que ela consiga sustentar."</div>
-      <div style="margin-top:10px;"><a href="https://www.instagram.com/reel/DN1T1hF4gf-/" target="_blank" class="ig-link">▶ Entenda o processo</a></div>
-    </div>
-    <div class="meal-card">
-      <div style="font-family:'Cormorant Garamond',serif;font-size:17px;color:var(--gold);margin-bottom:12px;">🍽️ Planejamento Alimentar</div>
-      <p style="font-size:12px;color:var(--white-dim);line-height:2;"><strong style="color:var(--white)">4 refeições · ~1.843 kcal (treino) · ~1.551 kcal (repouso)/dia</strong>. Os alimentos foram selecionados estrategicamente: sem glúten, sem lactose, Hashimoto-friendly, de boa digestibilidade e praticidade máxima. Déficit calórico gradual para perda de gordura com preservação muscular. Nos dias de treino de MMII: aumente o carbo no almoço (arroz 100g → 150–180g).</p>
-      <div style="background:rgba(251,191,36,0.06);border:1px solid rgba(251,191,36,0.2);border-radius:3px;padding:8px 12px;margin-top:8px;font-size:11px;color:#fbbf24;">⚠️ Evite longos períodos sem comer — no seu contexto (Hashimoto + climatério) isso aumenta estresse fisiológico e prejudica massa muscular e eixo hormonal.</div>
-      <div style="margin-top:10px;display:flex;flex-wrap:wrap;gap:8px;"><a href="https://www.instagram.com/reel/DIzjTBhSr95/" target="_blank" class="ig-link">▶ Organização alimentar</a></div>
-    </div>
-    <div class="meal-card">
-      <div style="font-family:'Cormorant Garamond',serif;font-size:17px;color:var(--gold);margin-bottom:12px;">🏋️ Treinamento</div>
-      <p style="font-size:12px;color:var(--white-dim);line-height:2;">Você está muito bem orientada e acompanhada pelo Prof. Leonardo. Continue seguindo o planejamento proposto por ele com consistência. Treinar não é só estética — é o principal estímulo para preservação de massa muscular, melhora metabólica e equilíbrio hormonal.</p>
-    </div>
-    <div class="meal-card">
-      <div style="font-family:'Cormorant Garamond',serif;font-size:17px;color:var(--gold);margin-bottom:12px;">🔥 Atividade Aeróbica</div>
-      <p style="font-size:12px;color:var(--white-dim);line-height:2;">Programa avançado e controlado de <strong style="color:var(--white)">6 semanas · 7x/semana · 40 min (Seg–Sáb) + 60 min (Dom)</strong>. Meta mínima: 200 min/semana. Cardio em jejum é permitido (exceto dias de treino de MMII com Prof. Leonardo — coma antes). Continue variando os estímulos como já faz: HIIT, esteira, bike, corda, escada.</p>
-      <div style="margin-top:10px;"><a href="https://www.instagram.com/reel/DOY2YvMEbxP/" target="_blank" class="ig-link">▶ Benefícios do cardio</a></div>
-    </div>
-    <div class="meal-card">
-      <div style="font-family:'Cormorant Garamond',serif;font-size:17px;color:var(--gold);margin-bottom:12px;">🧠 Constância</div>
-      <p style="font-size:12px;color:var(--white-dim);line-height:2;">Você vem de um momento com mudanças importantes na rotina. O foco agora não é perfeição — é presença no processo. A estratégia precisa caber na sua vida, não o contrário.</p>
-      <div style="margin-top:10px;background:rgba(201,168,76,0.05);border:1px solid var(--border);border-left:3px solid var(--gold);border-radius:3px;padding:10px 14px;font-size:11px;color:var(--white);font-style:italic;">"Constância não é ausência de falhas, é capacidade de retorno."</div>
-      <div style="margin-top:10px;display:flex;flex-wrap:wrap;gap:8px;"><a href="https://www.instagram.com/reel/DHqfIjkxlM7/" target="_blank" class="ig-link">▶ Constância vence intensidade</a><a href="https://www.instagram.com/reel/DOgG7RTkYOx/" target="_blank" class="ig-link">▶ Não espere o momento perfeito</a></div>
-    </div>
-    <div class="meal-card">
-      <div style="font-family:'Cormorant Garamond',serif;font-size:17px;color:var(--gold);margin-bottom:12px;">🍽️ Refeição Livre e Álcool</div>
-      <p style="font-size:12px;color:var(--white-dim);line-height:2;"><strong style="color:var(--white)">1 refeição livre por semana</strong>, planejada e sem exageros. Álcool: continue evitando — excelente ponto.</p>
-      <div style="margin-top:10px;display:flex;flex-wrap:wrap;gap:8px;"><a href="https://www.instagram.com/reel/DNGS8cSRS5X/" target="_blank" class="ig-link">▶ Refeição livre</a><a href="https://www.instagram.com/reel/DI4b3FnSxAz/" target="_blank" class="ig-link">▶ Álcool e metabolismo</a></div>
-    </div>
-    <div class="meal-card">
-      <div style="font-family:'Cormorant Garamond',serif;font-size:17px;color:var(--gold);margin-bottom:12px;">📌 Suporte</div>
-      <p style="font-size:12px;color:var(--white-dim);line-height:2;">Suporte <strong style="color:var(--white)">segunda a sexta, 8h às 18h</strong>. Quanto mais você comunica, mais preciso o processo se torna. 💪</p>
-    </div>
-  </div>
-</section><section id="feedback" class="section">
+  <div class="section-header"><h2>Relatório <span>Personalizado</span></h2><div class="section-line"></div></div><div style="background:linear-gradient(135deg,#1a1500,var(--dark2));border:1px solid var(--border);border-radius:4px;padding:22px;margin-bottom:18px;text-align:center;"><div style="display:inline-block;background:var(--gold-dim);border:1px solid var(--border);color:var(--gold);font-size:9px;letter-spacing:2px;text-transform:uppercase;padding:4px 12px;border-radius:20px;margin-bottom:10px;">Lícia Tovar · 04/08/2026</div><div style="font-family:'Cormorant Garamond',serif;font-size:22px;color:var(--gold);margin-bottom:8px;">Relatório Personalizado · Exames &amp; Estratégia</div><p style="font-size:12px;color:var(--white-dim);line-height:1.9;">Leitura dos exames, o porquê de cada escolha alimentar e as orientações clínicas · Consultoria LB</p></div><div style="display:flex;flex-direction:column;gap:16px;"><div class="meal-card"><div style="font-family:'Cormorant Garamond',serif;font-size:17px;color:var(--gold);margin-bottom:12px;">🎯 Objetivo desta fase</div><p style="font-size:12px;color:var(--white-dim);line-height:2;">Vamos criar um <strong style="color:var(--white)">cenário de déficit calórico controlado (~1.670 kcal/dia)</strong> para <strong style="color:var(--white)">melhorar a composição corporal</strong> — reduzir gordura preservando a massa muscular — ao mesmo tempo em que ajustamos a alimentação para <strong style="color:var(--white)">favorecer os marcadores de saúde</strong> avaliados nos exames.</p><p style="font-size:12px;color:var(--white-dim);line-height:2;">Tudo isso respeitando o seu contexto: <strong style="color:var(--white)">Hashimoto</strong> (por isso mantemos sem glúten e sem lactose) e <strong style="color:var(--white)">climatério</strong>, fase em que preservar músculo e cuidar do perfil metabólico/hormonal é ainda mais importante.</p></div><div class="meal-card"><div style="font-family:'Cormorant Garamond',serif;font-size:17px;color:var(--gold);margin-bottom:12px;">🔬 O que os exames mostraram</div><p style="font-size:12px;color:var(--white-dim);line-height:2;"><span style="display:inline-block;background:rgba(201,168,76,.1);border:1px solid var(--border);color:#8fd18f;font-size:9px;font-weight:700;padding:1px 7px;border-radius:10px;">ÓTIMO</span> <strong style="color:var(--white)">Metabolismo excelente:</strong> insulina 3,2 · glicose 80 · hemoglobina glicada 5,2 · triglicerídeos 88. Você tem ótima sensibilidade à insulina — ou seja, <strong style="color:var(--white)">lida muito bem com carboidrato</strong>, por isso ele foi mantido no plano.</p><p style="font-size:12px;color:var(--white-dim);line-height:2;"><span style="display:inline-block;background:rgba(201,168,76,.1);border:1px solid var(--border);color:#8fd18f;font-size:9px;font-weight:700;padding:1px 7px;border-radius:10px;">CONTROLADO</span> <strong style="color:var(--white)">Tireoide compensada:</strong> TSH 2,20 e T4 livre 1,50, bem melhores que em 2024 (TSH já foi 5,03). O Hashimoto está controlado hoje.</p><p style="font-size:12px;color:var(--white-dim);line-height:2;"><span style="display:inline-block;background:rgba(201,168,76,.1);border:1px solid var(--border);color:#f8c464;font-size:9px;font-weight:700;padding:1px 7px;border-radius:10px;">ATENÇÃO LEVE</span> <strong style="color:var(--white)">Colesterol total 214</strong> (levemente alto), <strong style="color:var(--white)">mas com HDL 63 (alto, protetor)</strong> e triglicerídeos ótimos. O LDL está só um pouco acima e a PCR (inflamação) está baixa (0,40). Resumindo: seu perfil de risco é bom — o alvo é <strong style="color:var(--white)">reduzir o LDL de forma suave, sem cortar as gorduras boas</strong> que sustentam esse HDL protetor.</p><p style="font-size:12px;color:var(--white-dim);line-height:2;"><span style="display:inline-block;background:rgba(201,168,76,.1);border:1px solid var(--border);color:#f8c464;font-size:9px;font-weight:700;padding:1px 7px;border-radius:10px;">AJUSTAR</span> <strong style="color:var(--white)">Vitamina D 66,5</strong> (acima do ideal, você suplementa — já chegou a 111): vamos <strong style="color:var(--white)">reduzir/segurar</strong> a suplementação. <strong style="color:var(--white)">Ferritina 200,8</strong> em elevação: <strong style="color:var(--white)">não suplementar ferro</strong> e acompanhar.</p></div><div class="meal-card"><div style="font-family:'Cormorant Garamond',serif;font-size:17px;color:#f08a8a;margin-bottom:12px;">🩺 Pontos para acompanhamento médico</div><p style="font-size:12px;color:var(--white-dim);line-height:2;"><span style="display:inline-block;background:rgba(201,168,76,.1);border:1px solid var(--border);color:#f08a8a;font-size:9px;font-weight:700;padding:1px 7px;border-radius:10px;">MÉDICO</span> <strong style="color:var(--white)">Função renal:</strong> ureia e creatinina apareceram altas, mas <strong style="color:var(--white)">flutuando</strong> ao longo do tempo (não em queda progressiva) — o que combina com a sua boa massa muscular, treino intenso e hidratação. Ainda assim, o ideal é confirmar com o médico via <strong style="color:var(--white)">cistatina C + exame de urina</strong>, repetindo bem hidratada. Por isso, por ora, <strong style="color:var(--white)">reforçamos a hidratação e não aumentamos a proteína.</strong></p><p style="font-size:12px;color:var(--white-dim);line-height:2;"><span style="display:inline-block;background:rgba(201,168,76,.1);border:1px solid var(--border);color:#f08a8a;font-size:9px;font-weight:700;padding:1px 7px;border-radius:10px;">MÉDICO</span> <strong style="color:var(--white)">Hormônios androgênicos:</strong> testosterona total e livre, DHEA-S e prolactina em elevação. Esse conjunto é de <strong style="color:var(--white)">investigação com ginecologista/endocrinologista</strong> — a alimentação e o treino dão suporte, mas essa parte a gente alinha com o médico.</p></div><div class="meal-card"><div style="font-family:'Cormorant Garamond',serif;font-size:17px;color:var(--gold);margin-bottom:12px;">🍽️ Por que a dieta está assim</div><p style="font-size:12px;color:var(--white-dim);line-height:2;"><strong style="color:var(--white)">Fibras solúveis em destaque</strong> (linhaça, psyllium ou chia todos os dias, aveia, e a entrada do <strong style="color:var(--white)">feijão/leguminosas</strong>): é a principal ferramenta alimentar para <strong style="color:var(--white)">baixar o LDL</strong>, além de dar saciedade — importante no déficit.</p><p style="font-size:12px;color:var(--white-dim);line-height:2;"><strong style="color:var(--white)">Boas gorduras preservadas</strong> (salmão no jantar pelo ômega-3, azeite): protegem o seu HDL e ajudam no perfil lipídico e inflamatório. Não fazemos dieta "low-fat agressiva" justamente para não derrubar o HDL que está a seu favor.</p><p style="font-size:12px;color:var(--white-dim);line-height:2;"><strong style="color:var(--white)">Proteína adequada e bem distribuída</strong> nas 4 refeições, para preservar massa muscular no climatério — porém <strong style="color:var(--white)">sem exagero</strong>, respeitando a investigação renal em aberto.</p><p style="font-size:12px;color:var(--white-dim);line-height:2;"><strong style="color:var(--white)">Carboidrato mantido</strong> (arroz + fruta), porque seus exames mostram que você o aproveita muito bem. <strong style="color:var(--white)">Sem glúten e sem lactose</strong> seguem mantidos pelo Hashimoto.</p></div><div class="meal-card"><div style="font-family:'Cormorant Garamond',serif;font-size:17px;color:var(--gold);margin-bottom:12px;">🏋️ Treino e cardio, resumidamente</div><p style="font-size:12px;color:var(--white-dim);line-height:2;">O <strong style="color:var(--white)">treino de força</strong> é o principal estímulo para preservar massa muscular e melhorar o metabolismo nesta fase — siga as orientações da aba Treino.</p><p style="font-size:12px;color:var(--white-dim);line-height:2;">O <strong style="color:var(--white)">cardio</strong> ajuda no condicionamento, no perfil lipídico e no gasto calórico do déficit — detalhes na aba Cardio.</p></div><div class="meal-card"><div style="font-family:'Cormorant Garamond',serif;font-size:17px;color:var(--gold);margin-bottom:12px;">💧 Orientações clínicas · resumo prático</div><p style="font-size:12px;color:var(--white-dim);line-height:2;">• <strong style="color:var(--white)">Hidratação:</strong> capriche na água ao longo do dia (reforça marcadores renais e o hemograma).<br>• <strong style="color:var(--white)">Vitamina D:</strong> reduzir/segurar a suplementação e reavaliar.<br>• <strong style="color:var(--white)">Ferro:</strong> não suplementar (ferritina em elevação).<br>• <strong style="color:var(--white)">Castanha-do-pará:</strong> 1 unidade/dia (selênio, apoio à tireoide) — só 1, sem exceder.<br>• <strong style="color:var(--white)">Exames a repetir com o médico:</strong> cistatina C + urina (função renal); e avaliação do quadro hormonal (androgênios/prolactina).</p></div></div></section><section id="feedback" class="section">
   <div class="section-header"><h2>Feedback <span>Semanal</span></h2><div class="section-line"></div></div>
 
   <div class="fb-obs">
@@ -1501,6 +1406,10 @@ if (localStorage.getItem('lb-theme') === 'light') document.body.classList.add('l
 
 // ── SAVE/LOAD ──
 function saveObs(el) { localStorage.setItem(el.dataset.key, el.value); }
+function showVersao(target, btn){ var g=btn.closest('.versao-group'); if(!g) return;
+  g.querySelectorAll(':scope > .versao-content').forEach(function(c){c.classList.remove('active');});
+  g.querySelectorAll(':scope > .versao-tabs .versao-tab').forEach(function(t){t.classList.remove('active');});
+  var el=document.getElementById(target); if(el) el.classList.add('active'); if(btn) btn.classList.add('active'); }
 function saveCardio(el) { localStorage.setItem(el.dataset.key, el.checked ? '1' : '0'); }
 function saveLoad(el) {
   const key = el.dataset.key;
@@ -1739,7 +1648,7 @@ function searchSubs() {
   const q = document.getElementById('subSearch').value.toLowerCase().trim();
   const results = document.getElementById('sub-results');
   if (!q || q.length < 2) { results.innerHTML = ''; return; }
-  const rows = document.querySelectorAll('.meal-table tbody tr');
+  const _sc=document.querySelector('#dieta')||document; const rows = _sc.querySelectorAll('.meal-table tbody tr');
   const found = [];
   rows.forEach(row => {
     const name = row.querySelector('.food-name');
@@ -1839,7 +1748,7 @@ ${obsGeral}
 `;
   txt += `
 ━━━━━━━━━━━━━━━━━━━━━━━
-Enviado via Portal Consultoria LB — Fulano de Tal`;
+Enviado via Portal Consultoria LB — Lícia Tovar`;
   document.getElementById('fb-result-text').textContent = txt;
   document.getElementById('fb-result').classList.add('show');
   document.getElementById('fb-result').scrollIntoView({behavior:'smooth'});
@@ -2011,7 +1920,7 @@ ${get('an-obs')}
 `;
   txt += `
 ━━━━━━━━━━━━━━━━━━━━━━━
-Enviado via Portal Consultoria LB — Fulano de Tal`;
+Enviado via Portal Consultoria LB — Lícia Tovar`;
   document.getElementById('an-result-text').textContent = txt;
   document.getElementById('an-result').classList.add('show');
   document.getElementById('an-result').scrollIntoView({behavior:'smooth'});
